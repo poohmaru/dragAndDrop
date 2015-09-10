@@ -21,19 +21,20 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func dragGesture(sender: UIPanGestureRecognizer) {
+    
+    func drag (sender: UIPanGestureRecognizer) {
         var point: CGPoint = sender.translationInView(self.view)
         var movedPoint: CGPoint = CGPointMake(sender.view!.center.x + point.x, sender.view!.center.y + point.y)
         sender.view!.center = movedPoint
         sender.setTranslation(CGPointZero, inView: self.view)
     }
 
+    @IBAction func dragGesture(sender: UIPanGestureRecognizer) {
+        drag(panGesture)
+    }
+
     @IBAction func bluePan(sender: UIPanGestureRecognizer) {
-        var point: CGPoint = sender.translationInView(self.view)
-        var movedPoint: CGPoint = CGPointMake(sender.view!.center.x + point.x, sender.view!.center.y + point.y)
-        sender.view!.center = movedPoint
-        sender.setTranslation(CGPointZero, inView: self.view)
+        drag(panGestureblue)
     }
 }
 
